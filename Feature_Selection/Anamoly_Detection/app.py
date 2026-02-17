@@ -15,7 +15,7 @@ st.markdown("---")
 st.markdown("This application uses **Isolation Forest** to detect anomalies in air quality data.")
  
 # Load the trained model
-model_path = "C:\Users\RISHITHA SRIJA\OneDrive\Documents\23B81A05AS (AI&DS)\Unsupervised_learning\Feature_Selection\Anamoly_Detection\isolation_forest_air_quality.pkl"
+model_path = "C:/Users/RISHITHA SRIJA/OneDrive/Documents/23B81A05AS (AI&DS)/Unsupervised_learning/Feature_Selection/Anamoly_Detection/isolation_forest_air_quality.pkl"
  
 try:
     model = joblib.load(model_path)
@@ -178,4 +178,5 @@ with tab3:
     - **Anomaly Score**: Lower scores indicate more anomalous behavior
     """)
  
+
  
