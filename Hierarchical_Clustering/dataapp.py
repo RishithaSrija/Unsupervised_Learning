@@ -35,9 +35,12 @@ html, body, [class*="css"] {
 }
 
 /* Main text */
-p, li, label, span, div {
+p, li, label {
     color: #f8fafc !important;
-    font-size: 15px;
+}
+
+[data-testid="stMarkdownContainer"] {
+    color: #f8fafc !important;
 }
 
 /* Sidebar */
@@ -167,7 +170,6 @@ h2,h3{
 }
 
 </style>
-""", unsafe_allow_html=True)
 """, unsafe_allow_html=True)
 
 
@@ -335,6 +337,12 @@ if uploaded_file:
             color=labels.astype(str),
             hover_name=text_data.iloc[:len(labels)]
         )
+        fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="white")
+            )
 
         st.plotly_chart(fig, use_container_width=True)
 
@@ -370,7 +378,8 @@ if uploaded_file:
             columns=["Cluster ID", "Number of Articles", "Top Keywords", "Example Article"]
         )
 
-        st.dataframe(summary_df)
+        st.dataframe(
+                summary_df,use_container_width=True,height=350)
 
         # -----------------------------
         # SILHOUETTE SCORE
@@ -396,6 +405,12 @@ Negative → poor clustering
 
         for row in summary:
             st.write(f"🟣 Cluster {row[0]}: Articles related to {row[2][:60]}...")
+
+        div[data-testid="stAlert"]{
+        border-radius:15px;
+        border:none;
+        padding:16px;
+        }
 
         st.success("""
 Articles grouped in the same cluster share similar vocabulary and themes.
