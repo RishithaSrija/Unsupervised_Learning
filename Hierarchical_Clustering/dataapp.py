@@ -129,6 +129,11 @@ h2,h3{
     border-radius:15px;
     padding:10px;
 }
+div[data-testid="stAlert"]{
+    border-radius:15px;
+    border:none;
+    padding:16px;
+}
 
 /* Success Box */
 .stSuccess{
@@ -406,11 +411,7 @@ Negative → poor clustering
         for row in summary:
             st.write(f"🟣 Cluster {row[0]}: Articles related to {row[2][:60]}...")
 
-        div[data-testid="stAlert"]{
-        border-radius:15px;
-        border:none;
-        padding:16px;
-        }
+        
 
         st.success("""
 Articles grouped in the same cluster share similar vocabulary and themes.
