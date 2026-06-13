@@ -16,41 +16,158 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 # -----------------------------
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
 }
 
-.stApp {
-    background: linear-gradient(135deg,#eef2ff,#f8fafc);
+/* Main App */
+.stApp{
+    background: linear-gradient(
+        135deg,
+        #0f172a 0%,
+        #1e293b 50%,
+        #111827 100%
+    );
+    color: #f8fafc;
 }
 
-section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg,#1e1e2f,#2b2b45);
+/* Main text */
+p, li, label, span, div {
+    color: #f8fafc !important;
+    font-size: 15px;
 }
 
-section[data-testid="stSidebar"] * {
-    color:white !important;
+/* Sidebar */
+section[data-testid="stSidebar"]{
+    background: linear-gradient(
+        180deg,
+        #111827,
+        #1e293b
+    );
+    border-right: 1px solid rgba(255,255,255,0.1);
 }
 
-h1 {
-    font-weight:600;
-    background: linear-gradient(90deg,#7c3aed,#6366f1);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+section[data-testid="stSidebar"] *{
+    color: white !important;
 }
 
-div.stButton > button {
-    background: linear-gradient(90deg,#7c3aed,#6366f1);
-    color:white;
-    border-radius:10px;
+/* Title */
+h1{
+    color:#ffffff !important;
+    font-size:42px !important;
+    font-weight:700 !important;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* Headers */
+h2,h3{
+    color:#c4b5fd !important;
+    font-weight:600 !important;
+}
+
+/* Cards */
+[data-testid="stVerticalBlock"] > div{
+    background: rgba(255,255,255,0.04);
+    border-radius:18px;
+    padding:18px;
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+}
+
+/* Buttons */
+.stButton > button{
+    width:100%;
     border:none;
-    padding:10px 20px;
+    border-radius:12px;
+    padding:12px;
     font-weight:600;
+    color:white;
+    background:linear-gradient(
+        90deg,
+        #7c3aed,
+        #6366f1
+    );
+    transition:0.3s;
+}
+
+.stButton > button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 25px rgba(124,58,237,0.5);
+}
+
+/* Inputs */
+.stTextInput input,
+.stNumberInput input,
+.stSelectbox div,
+.stMultiSelect div{
+    background:#1f2937 !important;
+    color:white !important;
+    border-radius:10px !important;
+}
+
+/* Sliders */
+.stSlider{
+    padding-top:10px;
+}
+
+/* DataFrame */
+[data-testid="stDataFrame"]{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+/* Metric boxes */
+[data-testid="metric-container"]{
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    padding:10px;
+}
+
+/* Success Box */
+.stSuccess{
+    background:#064e3b !important;
+    color:white !important;
+    border-radius:12px;
+}
+
+/* Info Box */
+.stInfo{
+    background:#1e3a8a !important;
+    color:white !important;
+    border-radius:12px;
+}
+
+/* Warning */
+.stWarning{
+    border-radius:12px;
+}
+
+/* Plotly chart container */
+.js-plotly-plot{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111827;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#6366f1;
+    border-radius:10px;
 }
 
 </style>
+""", unsafe_allow_html=True)
 """, unsafe_allow_html=True)
 
 
@@ -58,12 +175,29 @@ div.stButton > button {
 # TITLE
 # -----------------------------
 
-st.title('🟣 News Topic Discovery Dashboard')
+st.markdown("""
+<h1>
+📰 News Topic Discovery Dashboard
+</h1>
+""", unsafe_allow_html=True)
 
-st.write("""
-This system uses Hierarchical Clustering to automatically group similar news articles.
-Discover hidden themes without defining categories upfront.
-""")
+st.markdown("""
+<div style="
+background:linear-gradient(135deg,#7c3aed,#4f46e5);
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+color:white;
+text-align:center;
+">
+<h2 style="color:white;">AI Powered News Clustering</h2>
+<p>
+Discover hidden news topics automatically using
+TF-IDF, Hierarchical Clustering, PCA Visualization,
+and Business Insights.
+</p>
+</div>
+""", unsafe_allow_html=True)
 
 
 # -----------------------------
